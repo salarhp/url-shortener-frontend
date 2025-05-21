@@ -1,35 +1,62 @@
-# url-shortener-frontend
+# URL Shortener Frontend (Vue 3 + Vite)
 
-This template should help get you started developing with Vue 3 in Vite.
+This is the frontend component of the URL Shortener challenge. It is a Single Page Application (SPA) built using Vue 3 and Vite, interacting with a Rails API backend.
 
-## Recommended IDE Setup
+## 📦 Requirements
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Node.js (v18+ recommended)
+- npm or yarn
 
-## Customize configuration
+## 🚀 Setup Instructions
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+1. **Clone the repository:**
 
-## Project Setup
+```bash
+git clone https://github.com/salarhp/url-shortener-frontend.git
+cd url-shortener-frontend
+```
 
-```sh
+2. **Install dependencies:**
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+or
 
-```sh
+```bash
+yarn
+```
+
+3. **Run the development server:**
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+The app will be available at `http://localhost:5173`.
 
-```sh
-npm run build
-```
+---
 
-### Lint with [ESLint](https://eslint.org/)
+## ✨ Features
 
-```sh
-npm run lint
-```
+- Input a long URL to receive a shortened link
+- Custom slug input (optional)
+- Set expiration date for the short link (optional)
+- Choose link status (active, inactive, archived)
+- View list of previously shortened URLs with original + short form + click count
+
+---
+
+## 🔗 Integration with Backend
+
+- Uses Axios to communicate with Rails backend on `http://localhost:3000`.
+- Make sure the backend server is running
+
+---
+
+## 📎 Notes
+
+- This frontend assumes mocked authentication handled on the backend.
+- All shortened links belong to a mocked `current_user` with ID = 1.
+- This is a lightweight prototype — not intended for production use without security hardening and input validation.

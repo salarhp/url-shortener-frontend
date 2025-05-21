@@ -1,14 +1,20 @@
 <template>
   <div class="container">
-    <h1>URL Shortener</h1>
+    <h1>URL History</h1>
 
-    <input v-model="url" placeholder="Enter a long URL" />
-    <button @click="shorten">Shorten</button>
-
-    <div v-if="shortened">
-      <p><strong>Shortened:</strong> {{ shortened }}</p>
+    <div>
+      <ul>
+        <li v-for="link in links" :key="link.id">
+          <a :href="link.original_url" target="_blank">{{ link.original_url }}</a> →
+          <a :href="`http://localhost:3000/${link.slug}`" target="_blank">
+            shorten link: {{ link.slug }}
+          </a>
+          ({{ link.click_count }} clicks)
+          ({{ link.status }})
+          ({{ link.expires_at }})
+        </li>
+      </ul>
     </div>
-
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ShortenerView from '../views/ShortenerView.vue'
 import HistoryView from '../views/HistoryView.vue'
+import LinkForm from '../views/LinkForm.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/history',
       name: 'history',
       component: HistoryView,
+    },
+    {
+      path: '/link_form',
+      name: 'link_form',
+      component: LinkForm,
     },
   ],
 })

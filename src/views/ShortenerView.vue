@@ -27,7 +27,7 @@ const shorten = async () => {
     await fetchLinks()
     url.value = ''
   } catch (e) {
-    alert('Invalid URL')
+    alert(`Invalid URL ${e}`)
   }
 }
 

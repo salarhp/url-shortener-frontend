@@ -16,10 +16,12 @@
       <ul>
         <li v-for="link in links" :key="link.id">
           <a :href="link.original_url" target="_blank">{{ link.original_url }}</a> →
-          <a :href="`http://localhost:3000/slug/${link.short_token}`" target="_blank">
-            /slug/{{ link.short_token }}
+          <a :href="`http://localhost:3000/${link.slug}`" target="_blank">
+            shorten link: {{ link.slug }}
           </a>
-          ({{ link.clicks_count }} clicks)
+          ({{ link.click_count }} clicks)
+          ({{ link.status }})
+          ({{ link.expires_at }})
         </li>
       </ul>
     </div>
@@ -36,8 +38,8 @@ const links = ref([])
 
 const shorten = async () => {
   try {
-    const res = await axios.post('/api/links', { link: { original_url: url.value } })
-    shortened.value = `http://localhost:3000/r/${res.data.short_token}`
+    const res = await axios.post('/api/v1/links', { link: { original_url: url.value } })
+    shortened.value = `http://localhost:3000/${res.data.slug}`
     await fetchLinks()
     url.value = ''
   } catch (e) {
@@ -46,7 +48,7 @@ const shorten = async () => {
 }
 
 const fetchLinks = async () => {
-  const res = await axios.get('/api/links')
+  const res = await axios.get('/api/v1/links')
   links.value = res.data
 }
 
